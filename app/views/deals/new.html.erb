@@ -15,4 +15,26 @@
           </div>
         </div>
       </nav>
+          <h2 align="center">Todays deals:</h2>  
+            <table class="table table-hover">
+              <thead class="thead" align="center">
+                <tr>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Discount Price</th>
+                </tr>
+
+              </thead>
+            
+              <tbody>
+                <% @product.each do |product|%>
+                <tr align="center">         
+                  <td><%= product.title %></td>
+                  <td><%= product.description%></td>
+                  <td><%= product.price%></td>
+                </tr>
+                <%end%>
+              </tbody>
+            </table>
+          </div>
   

@@ -9,6 +9,7 @@
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                <li class="nav-item">
+                <%= link_to "Apply Discount",id: 'btn_',:method => "get",  class: 'btn btn-info'%>
               </li>
             </ul>
           </div>
@@ -33,7 +34,7 @@
               <%= f.number_field :discount_price, placeholder: "Apply Discount" %>
             </div>
               <div class="col-12">
-              <%= f.submit "Create",class: "btn btn-success",id: 'btn_' %>
+              <%= f.submit "Create",class: "btn btn-success" %>
             </div>
           </div>
       </div>
@@ -63,7 +64,6 @@
                </tr>
                 <%end%>
              </tbody> 
-          </thead>
     </table>
   </div>
 </div>
@@ -89,6 +89,7 @@
                   url:"/deals/deals_products",
                   data: {product_ids: productIds}
                 });
+                 alert(productIds);
               }
 
 </script>

@@ -17,12 +17,10 @@ class DealsController < ApplicationController
 	   end
 	end			
 	def deals_products
-
 		@products = Product.all
-		byebug
 		if params[:product_ids].present?
 			@product = Product.find(params[:product_ids])
-			@product.price
+			@product.first
 		end
 	end
 

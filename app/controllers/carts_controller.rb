@@ -16,7 +16,6 @@
   
    	def manage_product
         if params[:type] == 'true'
-            # , quantity: params[:quantity]
             cart = Cart.find_or_create_by(product_id: params[:product_id], user_id:  current_user.id, purchased: false)
             cart.quantity = ((cart.quantity)? cart.quantity: 0) + params[:quantity].to_i
             cart.save

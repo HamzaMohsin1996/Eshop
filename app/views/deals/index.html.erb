@@ -10,7 +10,7 @@
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
                <%if current_user.has_role? :admin%>
-              	<%= button_to "Create Deals",deals_products_deals_path(@deals),:method => "get",  class: 'btn btn-info'%>
+              	<%= button_to "Create Deals",deals_products_deals_path,:method => "get",  class: 'btn btn-info'%>
               	<%end%>
               </li>
             </ul>
@@ -25,7 +25,9 @@
                   <th>Name</th>
                   <th>Description</th>
                   <th>Discount Price</th>
+                  <%if current_user.has_role? :admin %>
                   <th>Delete</th>
+                  <%end%>
                 </tr>
 
               </thead>
@@ -36,7 +38,9 @@
                   <td><%= deal.title %></td>
                   <td><%= deal.description%></td>
                   <td><%= deal.discount_price%></td>
-                  <td> <%= button_to 'Delete', deal_path(deal),method: :delete,data: { confirm: 'Are you sure?' },class: 'btn btn-info'%></td>
+                  <%if current_user.has_role? :admin%>
+                  <td> <%= link_to '', deal_path(deal),method: :delete,data: { confirm: 'Are you sure?' },class: 'btn btn-info',class: " glyphicon glyphicon-remove"%></td>
+                  <%end%>
                 </tr>
                 <%end%>
               </tbody>

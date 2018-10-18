@@ -67,10 +67,10 @@ ActiveRecord::Schema.define(version: 2018_10_18_065610) do
   end
 
   create_table "deals_products", force: :cascade do |t|
-    t.bigint "deals_id", null: false
-    t.bigint "products_id", null: false
-    t.index ["deals_id"], name: "index_deals_products_on_deals_id"
-    t.index ["products_id"], name: "index_deals_products_on_products_id"
+    t.bigint "deal_id", null: false
+    t.bigint "product_id", null: false
+    t.index ["deal_id"], name: "index_deals_products_on_deal_id"
+    t.index ["product_id"], name: "index_deals_products_on_product_id"
   end
 
   create_table "discountdeals", force: :cascade do |t|
