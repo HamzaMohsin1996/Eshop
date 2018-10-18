@@ -1,0 +1,95 @@
+   <nav class="navbar navbar-expand-lg navbar-light  bg-light fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="/deals">
+            <img src="/assets/4.png" width="100" height="30" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+               <li class="nav-item">
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <div class="row">
+        
+           <div class="col-md-12 ">
+            <div class="col-md-8">
+          <%= bootstrap_form_for(Deal.new) do |f| %>
+        <div class="container" id="para">
+          <h3 align="center">Apply Discount:</h3>
+           <div class="row">
+              <div class="col-12">    
+                <%= f.text_field :title ,placeholder: "Deal Name" %>
+              </div>
+            <div class="col-12">    
+                <%= f.text_field :description,placeholder: "Deal Description" %>
+              </div>
+              <div  class="col-12">
+              <%= f.number_field :discount_price, placeholder: "Apply Discount" %>
+            </div>
+              <div class="col-12">
+              <%= f.submit "Create",class: "btn btn-success",id: 'btn_' %>
+            </div>
+          </div>
+      </div>
+        <% end %>
+     </div> 
+     <div class="col-md-8" align="right">
+            <table class="table table-hover">
+            
+              <thead class="thead " align="center">
+                <tr>
+                  <th scope="col">Select</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Image</th>
+                </tr>
+                
+              </thead>  
+              <tbody>
+                <% @products.each do |product|%>
+                <tr align="center"> 
+                  <td scope="row"><%=check_box_tag  "#{product.id}",product.id,false,class: "product-checkbox"%></td> 
+                  <td scope="row"><%= product.title %></td>
+                  <td scope="row"><%= product.description%></td>
+                  <td scope="row"><%= product.price%>Rs</td>
+                  <td><%=  image_tag(product.image.url)%></td>
+               </tr>
+                <%end%>
+             </tbody> 
+          </thead>
+    </table>
+  </div>
+</div>
+</div>  
+</div>
+<script type="text/javascript">
+
+              $("#btn_").on('click', function () {
+                  var checkbox_value = [];
+                  $(":checkbox").each(function () {
+                      var ischecked = $(this).is(":checked");
+                      if (ischecked) {
+                          checkbox_value.push($(this).val())
+                      }
+                  });
+
+                 send_productIds(checkbox_value)
+              });
+
+              function send_productIds(productIds){
+                 $.ajax({
+                  type: "GET",
+                  url:"/deals/deals_products",
+                  data: {product_ids: productIds}
+                });
+              }
+
+</script>
+        

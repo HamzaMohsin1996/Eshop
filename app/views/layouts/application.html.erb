@@ -1,0 +1,142 @@
+  <!DOCTYPE html>
+<html>
+  <head>
+    <title>Shop</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload'%>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
+    
+    <style>
+    html,body{
+      height: 100%;
+    }
+    .main_wrapper{
+      min-height: 100%;
+    }
+      body{
+        padding-top:75px;
+        background-color: white;
+            }
+
+     .btn{
+        min-width: 20px;
+      }
+      .card{
+        border-color: blue;
+        
+      }
+      #cat{
+        min-width: 20px;
+      }
+      
+      #cart{
+         margin: 10px auto;
+      }
+      #para{
+            background-color: beige;
+            max-width: 400px;
+            padding-bottom: 20px;
+            padding-top: 10px;
+      }
+      #para1{
+            background-color: beige;
+            max-width: 500px;
+            padding-bottom: 15px;
+            padding-top: 10px;
+      }
+      #adress{
+        background-color: #b29b9b;
+            max-width: 400px;
+ 
+      }
+      #pays{
+        padding-top: 1.5%;
+        max-width: 350px;
+      }
+     .sign{
+      padding-top: 1.5%;
+     }
+      .c1{
+           max-width: 350px;
+           margin: 0 auto;
+       }
+       .product_img_wrapper {
+              height: 300px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding:30px;
+}
+         .product_img_wrapper img{
+                display: block;
+                margin: 0 auto;
+                max-width: 100%;
+         }
+
+
+       #btn1{
+                width: 50%;
+                margin: 0 auto;
+                text-align: center;
+}
+       }
+       #show{
+        max-width: 400px;
+       }
+       .footer{
+            position: -webkit-sticky; /* Safari */
+            position: relative;
+            background-color: gainsboro;  
+            text-align: center;
+            width: 100%;
+            left: 0;
+            bottom: 0;
+            flex-shrink: 0;
+
+       }
+        .header {
+            color: #8ab2f2 ;
+            font-size: 27px;
+            padding: 10px;
+        }
+        #cn1{
+          display: inline-block;
+        }
+
+     </style>
+  </head>
+
+  <body>
+    <div class="main_wrapper">
+   <div class="container">
+        <% if notice %>
+            <div id="notice_wrapper">
+               <p class="notice"><%=notice%></p>
+            </div>
+        <%elsif alert%>
+            <div id="alert_wrapper">
+                <p class="alert"><%=alert%></p>
+            </div>
+        <%end%>
+   </div>
+        <%= yield %>
+        </div>
+        <footer class="page-footer font-small mdb-color lighten-3 pt-4">
+          <div class="footer">
+            <!-- Footer Elements -->
+            <div class="container">
+            <div class="footer-copyright text-center py-3">© 2018 Copyright:
+             <a href="/"> EShop.com</a>
+            </div>
+            <!-- Copyright -->
+          </div>
+          </div>
+      </footer>
+<!-- Footer -->
+      
+       
+</body>
+</html>

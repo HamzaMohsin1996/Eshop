@@ -1,0 +1,39 @@
+      <nav class="navbar navbar-expand-lg navbar-light  bg-light fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="/">
+             <img src="/assets/4.png" width="100" height="40" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+          </div>
+        </div>
+      </nav>
+      
+      <div class="container" id="pays">
+        <h2 align="left">Select Payment method: </h2>
+          <div class="row" align="center">
+         <%= form_tag payment_checkout_index_path do %>
+              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-description="A month's subscription"
+                data-amount="<%= @sub_total %>"
+                data-locale="auto"></script>
+        <% end %>
+                      
+        <%= button_to 'Cash On delivery' ,payment_checkout_index_path, class: 'btn btn-success' %>
+      </div>
+    </div>
+      <script type="text/javascript">
+                $(document).ready(function(){
+                    $(".stripe-button-el span").remove();
+                        $("button.stripe-button-el").removeAttr('style').css({
+                            "display-inline":"block", 
+                            "padding":"3px",
+                            "background":"#5ba846",
+                             "margin-right": "20px",
+                            "color":"white",
+                            "font-size":"1.2em" }).html("Pay with Card");
+                    });
+          </script>

@@ -1,0 +1,2 @@
+class AddDiscountPriceProduct < ApplicationRecord
+end

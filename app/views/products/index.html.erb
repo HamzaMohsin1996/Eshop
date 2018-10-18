@@ -1,0 +1,98 @@
+      <nav class="navbar navbar-expand-lg navbar-light  bg-light fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="/">
+             <img src="/assets/4.png" width="100" height="30" alt="">
+          </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto">
+               <li class="nav-item">
+                 <div class="container">
+                   <%if current_user.has_role? :admin%>
+                    <%= link_to "Add Product", new_product_path, class: 'btn btn-info'%>
+                   <%end%>
+                   
+                   <%=link_to"Cart",carts_path, class: "btn btn-info glyphicon glyphicon-shopping-cart"%>
+                 </div>
+              
+              </li>
+          </ul>
+          </div>
+        </div>
+      </nav>
+   <div class="container">
+      <div class="row">
+                  <% if @products.present? %>
+                  <% @products.each do |product|%>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                      <div class="card h-100">
+                        <div class="product_img_wrapper">
+                         <%= image_tag(product.image.url) %>
+                       </div>
+                        <div class="card-body">
+                          <h4 class="card-title">
+                          <strong>Title:</strong>
+                           <%= product.title %>    
+                          </h4>
+                          <p class="card-text">
+                            <strong>Price:</strong>
+                            <%= product.price %>Rs
+                              </p>
+                          <p class="card-text">
+                            <strong>Desciption:</strong>
+                            <%= product.description%></p> 
+                          <%if current_user.has_role? :admin%>
+                          <div class="row">
+                          <div class=" col-sm-3 col-sm-2">
+                          <p class="card-text">
+                           
+                            <%= button_to 'Edit', edit_product_path(product),class: 'btn btn-info'%>
+                         
+                          </p>
+                        </div>
+                          <div class="col-sm-3">
+                          <p class="card-text">
+                            <%= button_to 'Delete', product_path(product),method: :delete,data: { confirm: 'Are you sure?' },class: 'btn btn-info' %>
+                          </p>
+                             </div>
+                           </div>
+                            <%end%>
+                            <p class="card-text">
+                              <%# =check_box_tag "Products", "#{product.id}", false, class: 'product-checkboxes', id: 'product'+ "#{product.id}",:onclick => "myFunction(#{product.id},this)"%>
+                            </p>  
+                             <p class="card-text">
+                           
+                      
+
+                          <%= form_tag("/carts/manage_product", method: "post") do  %>
+                          <h4>Quantity:</h4>
+                          <%= number_field_tag :quantity , required: true %>
+                          <%= hidden_field_tag(:product_id, product.id) %>
+
+                          <%= hidden_field_tag(:type, true) %>
+                          <%= submit_tag("Add To Cart",class: "btn btn-info", id:'cart')%>
+                          <%end%>
+                          </p>
+                        </div>
+                      </div>
+                     </div>
+                    <%end%>
+                    <%end%>
+                  </div>         
+    </div>
+    
+      
+      
+    
+    
+
+
+
+      
+
+
+
+
+
