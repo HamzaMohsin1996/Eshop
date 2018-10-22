@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 admin = User.new(
-    :email => "ha@gmail.com",
+    :email => "ha@gmail.com" "alongside@gmail.com",
     :password => "123456"
 )
 if admin.save
