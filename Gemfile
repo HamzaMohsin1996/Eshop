@@ -44,6 +44,9 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem "bootstrap_form", ">= 4.0.0.alpha1"
 gem 'bootstrap-glyphicons'
+group :production do
+    gem 'rails_12factor'
+end
 
 
 group :development, :test do
