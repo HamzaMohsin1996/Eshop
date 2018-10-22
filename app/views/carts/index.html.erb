@@ -41,7 +41,7 @@
 					        <td scope="row"><%= cart.product.price%>Rs</td>
 					        <td scope="row"><%= cart.quantity%></td>
 					        <td scope="row"><%= cart.product.price*cart.quantity%>Rs</td>
-					        <td scope="row"><%= link_to '', cart_path(cart),method: :delete,data: { confirm: 'Are you sure?' },class: " glyphicon glyphicon-remove" %></td>
+					        <td scope="row"><%= link_to 'Delete', cart_path(cart),method: :delete,data: { confirm: 'Are you sure?' },class: " glyphicon glyphicon-remove" %></td>
 					     </tr>
 					      <%end%>
 					    </thead>
@@ -55,13 +55,13 @@
                     </tr>
                     <tr align="center",id="btn1">
                         <td>
-                        <%=link_to '',products_index_path,:method => "get" ,class: "glyphicon glyphicon-arrow-left btn btn-info float-left"%></td>
+                        <%=link_to 'Continue Shopping',products_index_path,:method => "get" ,class: "glyphicon glyphicon-arrow-left btn btn-info float-left"%></td>
                         <td>    </td>
                         <td>   </td>
                         <td>   </td>
                         <td>   </td>
                       <td>   
-                       <%= link_to '' , new_checkout_path, :method => "get" ,class: "glyphicon glyphicon-arrow-right float-right btn btn-info"%>
+                       <%= link_to 'Checkout' , new_checkout_path, :method => "get" ,class: "glyphicon glyphicon-arrow-right float-right btn btn-info"%>
                         </td>
                     </tr>
 			 </tbody> 

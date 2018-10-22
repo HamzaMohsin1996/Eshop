@@ -39,7 +39,7 @@
                   <td><%= deal.description%></td>
                   <td><%= deal.discount_price%></td>
                   <%if current_user.has_role? :admin%>
-                  <td> <%= link_to '', deal_path(deal),method: :delete,data: { confirm: 'Are you sure?' },class: 'btn btn-info',class: " glyphicon glyphicon-remove"%></td>
+                  <td> <%= link_to 'Delete', deal_path(deal),method: :delete,data: { confirm: 'Are you sure?' },class: 'btn btn-info',class: " glyphicon glyphicon-remove"%></td>
                   <%end%>
                 </tr>
                 <%end%>
