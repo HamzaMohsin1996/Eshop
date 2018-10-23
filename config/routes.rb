@@ -34,9 +34,10 @@ Rails.application.routes.draw do
       end
     end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: 'dashboard#index'
+  root to: 'welcome#index'
   resources :welcome
   resources :dashboard
+  root to: 'dashboard#index'
   resources :carts do
     collection do
       post  :manage_product

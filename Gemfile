@@ -39,6 +39,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise', '~> 4.2'
 gem "rolify"
 gem "paperclip", "~> 6.0.0"
+gem 'aws-sdk', '~> 2.3'
 gem 'simple_form'
 gem 'jquery-rails'
 gem 'bootstrap-sass'

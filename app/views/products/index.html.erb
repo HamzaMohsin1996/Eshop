@@ -1,6 +1,6 @@
       <nav class="navbar navbar-expand-lg navbar-light  bg-light fixed-top">
         <div class="container">
-          <a class="navbar-brand" href="/">
+          <a class="navbar-brand" href="/dashboard">
              <img src="/assets/4.png" width="100" height="30" alt="">
           </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,7 +13,9 @@
                    <%if current_user.has_role? :admin%>
                     <%= link_to "Add Product", new_product_path, class: 'btn btn-info'%>
                    <%end%>
-                   
+                   <%if current_user.has_role? :admin%>
+                         <%= link_to "Add Category", new_category_path, :method => "get", class: "btn btn-info" %>
+                     <%end%>
                    <%=link_to"Cart",carts_path, class: "btn btn-info glyphicon glyphicon-shopping-cart"%>
                  </div>
               
