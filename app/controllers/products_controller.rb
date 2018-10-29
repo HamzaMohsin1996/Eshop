@@ -15,9 +15,10 @@ class ProductsController < ApplicationController
     @product =Product.find(params[:id])
   end
   def create
+    byebug
     @product = Product.new(product_params)
     @product.user=current_user
-     if @product.save
+    if @product.save
       redirect_to @product
     else
       render  'new'

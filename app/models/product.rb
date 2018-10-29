@@ -5,7 +5,8 @@ class Product < ApplicationRecord
 	belongs_to :user
 	has_many :cart, dependent: :delete_all
 	has_many :orders, through: :orderproduct
-	has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100#",large:"600x600" }
-	# validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
-	validates_attachment_content_type :image, :content_type => /image/  
+	#has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100#",large:"600x600" }
+	#validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+	#validates_attachment_content_type :image, :content_type => /image/ 
+	
 end

@@ -10,32 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_18_065610) do
+ActiveRecord::Schema.define(version: 2018_10_29_150904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "ShippingAddress", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "phone"
-    t.string "email"
-    t.string "address"
-    t.string "city"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "addresses", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "phone"
-    t.string "email"
-    t.string "adress"
-    t.string "city"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "carts", force: :cascade do |t|
     t.integer "user_id"
@@ -55,6 +33,7 @@ ActiveRecord::Schema.define(version: 2018_10_18_065610) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+    t.text "image"
   end
 
   create_table "deals", force: :cascade do |t|
@@ -112,11 +91,9 @@ ActiveRecord::Schema.define(version: 2018_10_18_065610) do
     t.datetime "updated_at", null: false
     t.integer "category_id"
     t.integer "user_id"
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
     t.integer "discount_price"
+    t.text "image"
+    t.string "picture"
   end
 
   create_table "roles", force: :cascade do |t|

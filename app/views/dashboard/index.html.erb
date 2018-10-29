@@ -104,12 +104,11 @@
                     <div class="col-lg-4 col-md-6 mb-4">
                       <div class="card h-100">
                         <div class="product_img_wrapper">
-                         <%=link_to image_tag(category.image.url),category_products_category_path(id: category.id) %>
+                         <img src='<%= (category.image) %>'> 
                        </div>
                         <div class="card-body">
-                          <h4 class="card-title">
-                            <strong>Title:</strong>
-                           <%=  category.title  %>    
+                          <h4 class="card-title" >
+                            <%= link_to  (category.title),category_products_category_path(id: category.id)%>
                           </h4>
                           <p class="card-text">
                             <strong>Description:</strong>
@@ -131,3 +130,4 @@
 
 
       <!-- /.container -->
+      

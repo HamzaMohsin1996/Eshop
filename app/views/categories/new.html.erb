@@ -23,12 +23,36 @@
             <div class="col-12">
                 <%= f.text_area :description %>
             </div>
-            <div class="col-12">
-                 <%= f.file_field :image  %>
+             <div class="col-12">
+            <input id="inp" type='file'>
+            <p  id=""></p>
+            <%=  f.hidden_field :image, value: "", id: 'b64'%>
+            <img id="img" height="150">
             </div>
             <div class="col-12">
                   <%= f.submit "Create",class: "btn btn-success" %>
             </div>
           </div>
       </div>
+      <script type="text/javascript">
+
+           function readFile() {
+          
+          if (this.files && this.files[0]) {
+            
+            var FR= new FileReader();
+            
+            FR.addEventListener("load", function(e) {
+              document.getElementById("img").src       = e.target.result;
+              console.log('dededwe', e.target.result)
+              document.getElementById("b64").value =  e.target.result;
+            }); 
+            
+            FR.readAsDataURL( this.files[0] );
+          }
+          
+        }
+
+        document.getElementById("inp").addEventListener("change", readFile);
+    </script>
    <% end %>
