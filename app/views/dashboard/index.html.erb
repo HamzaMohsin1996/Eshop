@@ -1,91 +1,88 @@
-      <!-- Navigation -->
-      <nav class="navbar navbar-expand-lg navbar-light  bg-light fixed-top">
-        <div class="container">
-          <a class="navbar-brand" href="/">
-                <img src="assets/4.png" width="100" height="30" alt="">
+  <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark navbar-top fixed-top">
+  <a class="navbar-brand" href="/"><img src="/assets/logoo.png" width="150" height="70" alt=""></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/products">
+          <i class="fab fa-product-hunt"></i>
+          Products
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/categories">
+          <i class="fab fa-categories-hunt"></i>
+          Categories
+        </a>
+      </li>
+        <li class="nav-item active">
+        <a class="nav-link" href="/deals">
+          Deals
+          <span class="sr-only">(current)</span>
           </a>
-         
-            <ol class="navbar-nav ml-auto">
-              <div class="btn-group" role="group" aria-label="Basic example">
-              <li class="nav-item">
+      </li> 
+      <li class="nav-item active">
+        <a class="nav-link" href="/carts">
+          Cart
+            <i class="fas fa-shopping-cart"></i>
+          <span class="sr-only">(current)</span>
+          </a>
+      </li> 
+      <li class="nav-item active">
+      <form class="form-inline my-2 my-lg-0">
+      <%= form_tag(products_path, method: 'get', class: 'navbar-form navbar-left ',align: 'center') do %>
 
-                <a class="nav-link">
-                 <%= button_to "Deals",deals_path, :method => "get", class: 'btn btn-info' %>
-              </a>
-            </li>
-              <li class="nav-item">
+                          <%= text_field_tag :search, params[:search], class: "form-control mr-sm-2",placeholder: "Search"   %>
+                          <%= submit_tag "Search", :name => nil,class: "btn btn-outline-success my-2 my-sm-0"%>
 
-                <a class="nav-link">
-                 <%= button_to "Products",products_path, :method => "get", class: 'btn btn-info' %>
-              </a>
-            </li>
-              <li class="nav-item">
-                <a class="nav-link">
-                  <%= button_to "Categories", categories_path, :method => "get", class: 'btn btn-info' %>
-                </a>
-              </li>
-                 <li class="nav-item">
-                <a class="nav-link">
-                  <%=button_to"My Cart",carts_path(@cart),:method => "get",  class: 'btn btn-info'%>
-                </a>
-               </li>
-                 <% if user_signed_in? %>
-                    <li class="nav-item">
-                      <a class="nav-link">
-                    <%= button_to('Logout', destroy_user_session_path, method: :delete ,  class: 'btn btn-info') %> 
-                        </a>       
-                    </li>
-                  <% else %>
-                      <li class="nav-item">
-                        <a class="nav-link">
-                      <%= button_to "Log In", new_user_session_path, :method => "get",  class: 'btn btn-info' %>
-                        </a>
-                      </li>
-                    </div>
-              <%end%>
-            </ol>
-             <div class="col-md-2" text-align="center">
-              <%= form_tag(products_path, method: 'get', class: 'navbar-form navbar-right ',align: 'center') do %>
-                <%= search_field_tag 'search', nil, class: 'form-control', placeholder: 'Search'  %>
-             <% end %>
-             </div>
+                       <% end %>
+                    </form>
+
+      <li class="dropdown">
+        <div class="btn-group dropleft">
+          <a href="#" class="btn btn-outline-success  dropdown-toggle" data-toggle="dropdown"  role="nav-link" aria-haspopup="true" aria-expanded="false"><i class="far fa-chevron-square-down"></i></a>
+          <ul class="dropdown-menu">
+        
+        <a class="nav-link" href="" >
+          <%= current_user.email%>
+          </a><br>
+
+          <a class="nav-link " href="<%= destroy_user_session_path%>" data-method="delete">
+            Logout
+          </a>
+          </ul>
         </div>
-      </nav>
-
+        </li>
+      </li>
+      </ul>
+  </div>
+</nav>
+  <div class="container">
       <!-- Page Content -->
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-3">
-                  <div class="list-group">
-                   
-                    <ul class="list-group">
-                      <h1>Categories</h1>
-                      <% if @categories.present?%>
-                        <% @categories.each do |category| %>
-                            <%= link_to category.title, category_products_category_path(id: category.id),class: "list-group-item" %>
-                         
-                        <%end%>
-                      <%end%>
-                    </ul>
-                </div>
-              </div>
-              <div class="col-lg-9">
+              <div class="col-lg-12">
 
-                <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+                <div id="carouselExampleIndicators" class="carousel" data-ride="carousel">
                   <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                     <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                   </ol>
                   <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
-                      <img class="d-block img-fluid" src="assets/eshop.jpg"  alt="First slide" style="width: 900px; height: 350px;">
+                      <img class="d-block img-fluid" src="assets/91.jpg"  alt="First slide" style="width: 1400px; height: 350px;">
                     </div>
                     <div class="carousel-item">
-                      <img class="d-block img-fluid" src="assets/e.jpg" alt="Second slide" style="width: 900px; height: 350px;">
+                      <img class="d-block img-fluid" src="assets/90.jpeg" alt="Second slide" style="width: 1400px; height: 350px;">
                     </div>
                     <div class="carousel-item">
-                      <img class="d-block img-fluid" src="assets/dlm.jpg" class: "img-responsive" alt="Third slide" style="width: 900px; height: 350px;">
+                      <img class="d-block img-fluid" src="assets/s9.jpg" class: "img-responsive" alt="Third slide" style="width: 1400px; height: 350px;">
+                    </div>
+                    <div class="carousel-item">
+                      <img class="d-block img-fluid" src="assets/off.jpg"  alt="Fourth slide" style="width: 1400px; height: 350px;">
                     </div>
                   </div>
                   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -97,36 +94,55 @@
                     <span class="sr-only">Next</span>
                   </a>
                 </div>
-
-                <div class="row">
-                  <% if @categories.present? %>
-                  <% @categories.each do |category|%>
-                    <div class="col-lg-4 col-md-6 mb-4">
-                      <div class="card h-100">
-                        <div class="product_img_wrapper">
-                         <img src='<%= (category.image) %>'> 
-                       </div>
-                        <div class="card-body">
-                          <h4 class="card-title" >
-                            <%= link_to  (category.title),category_products_category_path(id: category.id)%>
-                          </h4>
-                          <p class="card-text">
-                            <strong>Description:</strong>
-                            <%= category.description%>
-                          </p> 
-                        </div>
-                      </div>
-                     </div>
-                    <%end%>
-                    <%end%>
-                  </div>
-                </div>
-
-                </div>
-                <!-- /.row -->
-
               </div>
-          
+                <div class="row">
+              <div class="col-lg-3">
+                  <div class="list-group">
+                   
+                    <ul class="list-group">
+                      <h1>Categories</h1>
+                      <% if @categories.present?%>
+                        <% @categories.each do |category| %>
+                            <%= link_to category.title, category_products_category_path(id: category.id),class: "list-group-item" %>
+                         
+                        <%end%>
+                        <%else%>
+                        <p> There will be no Categories.</p>
+                      <%end%>
+                    </ul>
+                </div>
+              </div>
+<div class="col-lg-9">
+ <div class="container mt-40">
+            <div class="row mt-30">
+               <% if @categories.present? %>
+                  <% @categories.each do |category|%>
+                <div class="col-md-4 col-sm-6" style="padding-bottom: 50px;">
+                    <div class="box16">
+                        <img src='<%= category.image %>'>
+                        <div class="box-content">
+                            <h3 class="title">
+                              <font color="white">
+                               <%= link_to (category.title),category_products_category_path(id: category.id)%>
+                             </font>
+                              </h3>
+                            <span class="post"><%= category.description%></span>
+                            <ul class="social">
+                                <li>
+                                    <i>
+                                    
+                                    </i>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+              <% end %>
+            <% end %>
+         </div>
+     </div>
+    </div>
+ </div>       
 
 
       <!-- /.container -->

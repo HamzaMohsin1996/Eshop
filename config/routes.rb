@@ -37,7 +37,6 @@ Rails.application.routes.draw do
   root to: 'welcome#index'
   resources :welcome
   resources :dashboard
-  root to: 'dashboard#index'
   resources :carts do
     collection do
       post  :manage_product

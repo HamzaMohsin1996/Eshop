@@ -50,3 +50,49 @@
               }
 
 </script>
+
+
+                
+
+      <!-- /.container -->
+        <% if user_signed_in? %>
+                    <li class="nav-item">
+                      <a class="nav-link">
+                    <%= button_to('Logout', destroy_user_session_path, method: :delete ,  class: 'btn btn-info') %> 
+                        </a>       
+                    </li>
+                  <% else %>
+                      <li class="nav-item">
+                        <a class="nav-link">
+                      <%= button_to "Log In", new_user_session_path, :method => "get",  class: 'btn btn-info' %>
+                        </a>
+                      </li>
+                    </div>
+              <%end%>
+
+                 <li class="nav-item">
+                <a class="nav-link">
+                  <%=button_to"My Cart",carts_path(@cart),:method => "get",  class: 'btn btn-info'%>
+                </a>
+               </li>
+
+
+
+                 <p class="card-text">
+                              <%# =check_box_tag "Products", "#{product.id}", false, class: 'product-checkboxes', id: 'product'+ "#{product.id}",:onclick => "myFunction(#{product.id},this)"%>
+                            </p>  
+
+
+
+                                <div class="main_wrapper">
+   <div class="container">
+        <% if notice %>
+            <div id="notice_wrapper">
+               <p class="notice"><%=notice%></p>
+            </div>
+        <%elsif alert%>
+            <div id="alert_wrapper">
+                <p class="alert"><%=alert%></p>
+            </div>
+        <%end%>
+   </div>

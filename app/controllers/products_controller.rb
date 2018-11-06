@@ -1,8 +1,8 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @products= Product.where("products.user_id = ?", current_user.id).order('created_at asc') 
-    @products= Product.all
+    #@products= Product.where("products.user_id = ?", current_user.id).order('created_at asc') 
+    @products= Product.search(params[:search])
   end
   def show
     @product=Product.find(params[:id])
@@ -15,7 +15,6 @@ class ProductsController < ApplicationController
     @product =Product.find(params[:id])
   end
   def create
-    byebug
     @product = Product.new(product_params)
     @product.user=current_user
     if @product.save
@@ -49,6 +48,6 @@ class ProductsController < ApplicationController
   end
   private
   def product_params
-    params.require(:product).permit(:title, :price, :description,:category_id,:image,:discount_price)
+    params.require(:product).permit(:title, :price, :description,:category_id,:image,:discount_price,:search)
   end
 end

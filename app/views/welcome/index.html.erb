@@ -1,37 +1,186 @@
-     <!-- Navigation -->
-      <nav class="navbar navbar-expand-lg navbar-light  bg-light fixed-top">
-        <div class="container">
-          <a class="navbar-brand" href="/">
-                <img src="assets/4.png" width="100" height="30" alt="">
-          </a>
-         
-            <ol class="navbar-nav ml-auto">
-              <div class="btn-group" role="group" aria-label="Basic example">
-                 <li class="nav-item">
-                <a class="nav-link">
-                  <%=button_to"Continue",dashboard_index_path,:method => "get",  class: 'btn btn-info'%>
-                </a>
-               </li>
-                 <% if user_signed_in? %>
-                    <li class="nav-item">
-                      <a class="nav-link">
-                    <%= button_to('Logout', destroy_user_session_path, method: :delete ,  class: 'btn btn-info') %> 
-                        </a>       
-                    </li>
-                  <% else %>
-                      <li class="nav-item">
-                        <a class="nav-link">
-                      <%= button_to "Log In", new_user_session_path, :method => "get",  class: 'btn btn-info' %>
-                        </a>
-                      </li>
-                    </div>
-              <%end%>
-            </ol>
-            
+  
+    <!-- Navigation -->
+    <div class="container">
+ <div class="Something" style="margin: -101px;">
+    <header class="masthead text-center text-white d-flex">
+      <div class="container my-auto">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <h1 class="text-uppercase">
+              <strong>We continuously innovate to be the best destination for our customers and partners.</strong>
+            </h1>
+            <hr>
+          </div>
+          <div class="col-lg-8 mx-auto">
+            <p class="text-faded mb-5">Fashion & Clothing is the one makes you look awesome and unique from others!</p>
+            <a class="btn btn-primary btn-xl js-scroll-trigger" href="/dashboard">Continue</a>
+
+          </div>
         </div>
-      </nav>
-     
-     <%= image_tag('/assets/as.jpg', style: "height: 100%; width: 100%") %>
-     
+      </div>
+    </header>
+  </div>
 
+    <section id="services">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading">At Your Service</h2>
+            <hr class="my-4">
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fas fa-4x fa-gem text-primary mb-3 sr-icon-1"></i>
+              <h3 class="mb-3">Sturdy products</h3>
+              <p class="text-muted mb-0">Our products are updated regularly so they don't break.</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fas fa-4x fa-paper-plane text-primary mb-3 sr-icon-2"></i>
+              <h3 class="mb-3">Ready to Ship</h3>
+              <p class="text-muted mb-0">Our top proirty is to deliver product on time!</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fas fa-4x fa-code text-primary mb-3 sr-icon-3"></i>
+              <h3 class="mb-3">Up to Date</h3>
+              <p class="text-muted mb-0">We update categories to keep products fresh.</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fas fa-4x fa-heart text-primary mb-3 sr-icon-4"></i>
+              <h3 class="mb-3">Made with Love</h3>
+              <p class="text-muted mb-0">People love online shopping!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <section class="p-0" id="portfolio">
+      <div class="container-fluid p-0">
+        <div class="row no-gutters popup-gallery">
+          <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="/assets/all.jpg">
+              <img class="img-fluid" src="/assets/all.jpg" alt="">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Category
+                  </div>
+                  <div class="project-name">
+                    Project Name
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="/assets/2.jpg">
+              <img class="img-fluid" src="/assets/2.jpg" alt="">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Category
+                  </div>
+                  <div class="project-name">
+                    Project Name
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="/assets/3.jpg">
+              <img class="img-fluid" src="/assets/3.jpg" alt="">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Category
+                  </div>
+                  <div class="project-name">
+                    Project Name
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="/assets/4.jpg">
+              <img class="img-fluid" src="/assets/4.jpg" alt="">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Category
+                  </div>
+                  <div class="project-name">
+                    Project Name
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="/assets/5.jpg">
+              <img class="img-fluid" src="/assets/5.jpg" alt="">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Category
+                  </div>
+                  <div class="project-name">
+                    Project Name
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="/assets/6.jpg">
+              <img class="img-fluid" src="/assets/6.jpg" alt="">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Category
+                  </div>
+                  <div class="project-name">
+                    Project Name
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>  
+    <section id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <h2 class="section-heading">Let's Get In Touch!</h2>
+            <hr class="my-4">
+            <p class="mb-5">If you want any help from us feel free to contact.That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 ml-auto text-center">
+            <i class="fas fa-phone fa-3x mb-3 sr-contact-1"></i>
+            <p>03156310195</p>
+          </div>
+          <div class="col-lg-4 mr-auto text-center">
+            <i class="fas fa-envelope fa-3x mb-3 sr-contact-2"></i>
+            <p>
+              <a href="mailto:your-email@your-domain.com">hamza95.hw@gmail.com</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>

@@ -38,13 +38,13 @@ gem 'stripe', '~> 3.28'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise', '~> 4.2'
 gem "rolify"
-gem "paperclip", "~> 6.0.0"
 gem 'aws-sdk', '~> 2.3'
 gem 'simple_form'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem "bootstrap_form", ">= 4.0.0.alpha1"
 gem 'bootstrap-glyphicons'
+gem "font-awesome-rails"
 group :production do
     gem 'rails_12factor'
 end

@@ -1,57 +1,61 @@
-      <nav class="navbar navbar-expand-lg navbar-light  bg-light fixed-top">
-        <div class="container">
-          <a class="navbar-brand" href="/dashboard">
-              <img src="/assets/4.png" width="100" height="30" alt="">
+    <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark navbar-top fixed-top">
+  <a class="navbar-brand" href="/dashboard"><img src="/assets/logoo.png" width="150" height="70" alt=""></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/categories/new">
+          <i class="fa fa-home"></i>
+          <%if current_user.has_role? :admin%>
+          Add Category
+          <%end%>
+          <span class="sr-only">(current)</span>
           </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                      <%if current_user.has_role? :admin%>
-                         <%= button_to "Add Category", new_category_path, :method => "get", class: "btn btn-info" %>
-                     <%end%>
-              </li>
-            </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+  <div class="container-fluid">
+    <div class="row">
+     <% if @categories.present? %>
+       <% @categories.each do |category|%>
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card text-center">
+        <img class="card-img-top" src="<%= (category.image) %>" alt="Card image cap">
+        <div class="card-body" id="card">
+          <h5 class="card-title">
+            <strong>Title:</strong>
+            <%= category.title %> </h5>
+        </div>
+         <div class="card-body" id="card">
+          <h5 class="card-title"><strong>Description:</strong><%= category.description %> </h5>
+        </div>
+        <div class="card-footer text-muted">
+          <div class="row">
+            <div class="col">
+              <%if current_user.has_role? :admin%>
+              <a href="<%= edit_category_path(category) %>"><i class="fas fa-user-edit"></i></a>
+              <%end%>
+            </div>
+            <div class="col">
+              <%if current_user.has_role? :admin%>
+              <a href="<%= category_path(category) %>" data-confirm="Are you Sure?" data-method="delete"><i class="fas fa-trash"></i></a>
+              <%end%>
+            </div>
           </div>
         </div>
-      </nav>
-      <div class="container">
-       <div class="row">
-                  <% if @categories.present? %>
-                  <% @categories.each do |category|%>
-                    <div class="col-lg-4 col-md-6 mb-4">
-                      <div class="card h-80">
-                       <div class="product_img_wrapper">
-                            <img src='<%= (category.image) %>'> 
-                        </div>
-                        <div class="card-body">
-                          <h4 class="card-title">
-                          <strong>Title:</strong>
-                           <%= category.title %>    
-                          </h4>
-                          <p class="card-text">
-                            <strong>Description:</strong>
-                            <%= category.description%></p> 
-                          <%if current_user.has_role? :admin%>
-                          <div class="row">
-                            <div class=" col-sm-3 col-sm-2">
-                          <p class="card-text">
-                            <%= button_to 'Edit', edit_category_path(category),class: 'btn btn-info'%>
-                          </p>
-                        </div>
-                        <div class="col-sm-3">
-                           <p class="card-text">
-                            <%= button_to 'Delete', category_path(category),method: :delete,data: { confirm: 'Are you sure?' },class: 'btn btn-info' %>
-                          </p>
-                        </div>
-                      </div>
-                            <%end%>
-                        </div>
-                      </div>
-                     </div>
-                    <%end%>
-                    <%end%>
-                  </div>
-                </div>
+      </div>
+    </div>
+    <%end%>
+    <% else%>
+    <div class="container">
+    <p align="text-center">There will be no categories available.</p>
+  </div>
+    <%end%>
+  </div>
+</div>
+</div>
+</div>

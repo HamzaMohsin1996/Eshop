@@ -1,89 +1,67 @@
-      <nav class="navbar navbar-expand-lg navbar-light  bg-light fixed-top">
-        <div class="container">
-          <a class="navbar-brand" href="/dashboard">
-             <img src="/assets/4.png" width="100" height="30" alt="">
+ <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark navbar-top fixed-top">
+  <a class="navbar-brand" href="/dashboard"><img src="/assets/logoo.png" width="150" height="70" alt=""></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/carts">
+          <i class="fa fa-home"></i>
+          Cart
+          <span class="sr-only">(current)</span>
           </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-             <span class="navbar-toggler-icon"></span>
-           </button>
-           <div class="collapse navbar-collapse" id="navbarResponsive">
-              <ul class="navbar-nav ml-auto">
-               <li class="nav-item">
-                 <div class="container">
-                   <%=link_to"Buy Now",carts_path, onclick:'myFunction()', class: "btn btn-info glyphicon glyphicon-shopping-cart"%>
-                 </div>
-              
-              </li>
-          </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container-fluid">
+         <div class="row">
+     <% if @products.present? %>
+       <% @products.each do |product|%>
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card text-center">
+        <img class="card-img-top" src="<%= (product.image) %>" alt="Card image cap">
+        <div>
+          <h5 class="card-title"><strong><%= product.title %></strong> </h5>
+        <hr>
+
+        </div>
+         <div  style="text-align: left !important;">
+          <p><%= product.price %> PKR </p>
+          <p><%= product.description %> </p>
+          <p><strong>Bying Quantity </strong></p>
+         <%= form_tag("/carts/manage_product", method: "post") do  %>
+               <%= number_field_tag :quantity , required: true %>
+               <%= hidden_field_tag(:product_id, product.id) %>
+               <%= hidden_field_tag(:type, true) %><br>
+               <%= submit_tag("Add To Cart",class: " btn btn-outline-success btn-sm", id:'cart')%>
+          <%end%>
+        </div>
+        <div class="card-footer text-muted">
+          <div class="row">
+            <div class="col">
+              <%if current_user.has_role? :admin%>
+              <a href="<%= edit_product_path(product) %>"><i class="fas fa-user-edit"></i></a>
+              <%end%>
+            </div>
+            <div class="col">
+              <%if current_user.has_role? :admin%>
+              <a href="<%= product_path(product) %>" data-confirm="Are you Sure?" data-method="delete"><i class="fas fa-trash"></i></a>
+              <%end%>
+            </div>
           </div>
         </div>
-      </nav>
-<div class="container">
-  <div class="row">
-                  <% if @products.present? %>
-                  <% @products.each do |product|%>
-                    <div class="col-lg-4 col-md-6 mb-4">
-                      <div class="card h-80">
-                      <div class="product_img_wrapper">
-                         <div class="product_img_wrapper">
-                       <img src='<%= (product.image) %>'> 
-                       </div>
-                       </div>
-                        <div class="card-body">
-                          <h4 class="card-title">
-                            <strong>Title:</strong>
-                           <%= product.title %>    
-                          </h4>
-                          <p class="card-text">
-                            <strong>Price:</strong>
-                            <%= product.price %>Rs
-                              </p>
-                          <p class="card-text">
-                            <strong>Description:</strong>
-                            <%= product.description%></p> 
-                            <%if current_user.has_role? :admin%>
-                                 <div class="row">
-                                        <div class=" col-sm-3 col-sm-2">
-                                           <p class="card-text">
-                                               <%= link_to 'Edit', edit_product_path(product),class:'btn btn-info'%>
-                                                      </p>
-                                                  </div>
-                                          <div class="col-sm-3">
-                                               <p class="card-text">
-                                                <%= link_to 'Delete', product_path(product),method: :delete,data: { confirm: 'Are you sure?' },class:'btn btn-info' %>
-                                              </p>
-                                          </div>
-                                      </div>
-                             <%end%>
-                           <p class="card-text">
-                              <%#=check_box_tag "Products","#{product.id}", false, class: 'product-checkboxes', id: 'product'+ "#{product.id}"%>
-                            </p>
-                             <p class="card-text">
-
-                              <%= form_tag("/carts/manage_product", method: "post") do  %>
-                              <h4>Quantity:</h4>
-                                <%= number_field_tag :quantity, placeholder:"Add Quantity" %>
-                                <%= hidden_field_tag(:product_id, product.id) %>
-
-                                <%= hidden_field_tag(:type, true) %>
-                              <%= submit_tag("Add To Cart",class: "btn btn-info", id:'cart') %>
-                             <%end%>
-                          
-                          </p>
-                        </div>
-                      </div>
-                     </div>
-                    <%end%>
-                    <%end%>
-                  </div>
+      </div>
     </div>
 
+    <%end%>
+    <%else%>
+    <div class="container">
+         <p align="text-center">There will be no products available.</p>
+     </div>
+    <%end%>
 
-
-
-      
-
-
-
-
-
+  </div>
+</div>
