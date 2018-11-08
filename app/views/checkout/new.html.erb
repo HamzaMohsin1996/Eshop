@@ -4,8 +4,9 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 </nav>
+<body class="c1" style="height: 1000px;">
      <%= bootstrap_form_for @shipping_address,url: {action: "create"} do |f| %>
-        <div class="container" id="para1">
+        <div class="container" id="para">
           <h3 align="center">Shipping Address:</h3>
            <div class="row">
               <div class="col-12">    
@@ -36,6 +37,7 @@
         </div>
            
        <% end %>
+     </body>
      
      
 
